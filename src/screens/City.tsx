@@ -1,6 +1,6 @@
 import { ImageBackground, Text, StyleSheet, StatusBar, View } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Feather } from '@expo/vector-icons';
+import IconText from "@/components/IconText";
 
 const City = () => {
   return (
@@ -10,15 +10,24 @@ const City = () => {
         source={require('@/assets/images/city.jpg')}>
             <Text style={[styles.city, styles.cityText]}>City</Text>
             <Text style={[styles.country, styles.cityText]}>Country</Text>
-            <View style={styles.populationWrapper}>
-                <Feather name={'user'} size={50} color={'red'}/>
-                <Text style={styles.populationText}>10000</Text>
+            <View style={[styles.populationWrapper, styles.rowLayout]}>
+                <IconText featherName="user"
+                featherSize={50}
+                featherColor="red"
+                title="10000"
+                styling={styles.populationText}/>
             </View>
-            <View style={styles.sunWrapper}>
-                <Feather name={'sunrise'} size={50} color={'white'}/>
-                <Text style={styles.sunText}>6:00:00 AM</Text>
-                <Feather name={'sunset'} size={50} color={'white'}/>
-                <Text style={styles.sunText}>8:00:00 PM</Text>
+            <View style={[styles.sunWrapper, styles.rowLayout]}>
+                <IconText featherName="sunrise"
+                featherSize={50}
+                featherColor="white"
+                title="6:00:00AM"
+                styling={styles.sunText}/>
+                <IconText featherName="sunset"
+                featherSize={50}
+                featherColor="white"
+                title="8:00:00PM"
+                styling={styles.sunText}/>
             </View>
         </ImageBackground>
     </SafeAreaView>
@@ -46,8 +55,6 @@ const styles = StyleSheet.create({
         color: 'white',
     },
     populationWrapper:{
-        flexDirection:'row',
-        alignItems: 'center',
         justifyContent: 'center',
         marginTop:30,
     },
@@ -55,18 +62,18 @@ const styles = StyleSheet.create({
         fontSize: 25,
         marginLeft: 7.5,
         color: 'red',
-        fontWeight: 'bold',
     },
     sunWrapper:{
-        flexDirection: 'row',
-        alignItems: 'center',
         justifyContent: 'space-around',
         marginTop: 30,
     },
     sunText:{
         fontSize: 20,
         color: 'white',
-        fontWeight: 'bold',
+    },
+    rowLayout:{
+        flexDirection: 'row',
+        alignItems: 'center',
     }
 })
 

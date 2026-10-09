@@ -6,7 +6,7 @@ import { View, StyleSheet } from "react-native";
 const index = ()=>{
   return(
     <View style={styles.container}>
-      <City />
+      <CurrentWeather />
     </View>
   )
 }
