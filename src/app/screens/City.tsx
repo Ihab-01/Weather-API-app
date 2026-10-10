@@ -1,10 +1,9 @@
-import { ImageBackground, Text, StyleSheet, StatusBar, View } from "react-native";
-import { SafeAreaView } from 'react-native-safe-area-context';
-import IconText from "@/components/IconText";
+import { ImageBackground, Text, StyleSheet, View } from "react-native";
+import IconText from "@/app/components/IconText";
 
 const City = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
         <ImageBackground
         style={styles.imageLayout}
         source={require('@/assets/images/city.jpg')}>
@@ -30,14 +29,13 @@ const City = () => {
                 styling={styles.sunText}/>
             </View>
         </ImageBackground>
-    </SafeAreaView>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        marginTop: StatusBar.currentHeight || 0,
     },
     imageLayout:{
         flex: 1,

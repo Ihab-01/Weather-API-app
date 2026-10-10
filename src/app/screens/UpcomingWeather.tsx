@@ -1,6 +1,5 @@
-import { Text, ImageBackground, StyleSheet, FlatList, StatusBar } from "react-native"
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Item from "@/components/Item";
+import { View, Text, ImageBackground, StyleSheet, FlatList } from "react-native"
+import Item from "@/app/components/Item";
 import { Data } from '@/assets/Data';
 
 const UpcomingWeather = () => {
@@ -13,7 +12,7 @@ const UpcomingWeather = () => {
     )
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
         <ImageBackground 
         style={styles.image}
         source={require('@/assets/images/clouds.jpg')}>
@@ -23,14 +22,13 @@ const UpcomingWeather = () => {
             renderItem={renderItem}
             keyExtractor={(item) => item.dt_txt}/>
         </ImageBackground>
-    </SafeAreaView>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        marginTop: StatusBar.currentHeight || 0,
         backgroundColor: 'royalblue',
     },
     image:{
