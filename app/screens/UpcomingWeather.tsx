@@ -1,5 +1,5 @@
 import { View, Text, ImageBackground, StyleSheet, FlatList } from "react-native"
-import Item from "@/app/components/Item";
+import Item from "../components/Item";
 import { Data } from '@/assets/Data';
 
 const UpcomingWeather = () => {

@@ -1,5 +1,5 @@
 import { ImageBackground, Text, StyleSheet, View } from "react-native";
-import IconText from "@/app/components/IconText";
+import IconText from "../components/IconText";
 
 const City = () => {
   return (

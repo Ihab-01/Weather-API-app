@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import { Feather } from '@expo/vector-icons';
-import RowText from "@/app/components/RowText";
+import RowText from "../components/RowText";
 import weatherType from "../utilities/weatherType";
 
 const CurrentWeather = ()=>{

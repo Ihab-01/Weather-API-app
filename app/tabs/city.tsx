@@ -1,4 +1,4 @@
-import City from "@/app/screens/City";
+import City from "../screens/City";
 
 export default function CityScreen() {
   return <City />;
