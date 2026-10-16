@@ -1,31 +1,38 @@
 import { ImageBackground, Text, StyleSheet, View } from "react-native";
 import IconText from "../components/IconText";
+import { useWeather } from "../context/weatherProvider";
+import moment from "moment";
 
 const City = () => {
+
+    const weatherData = useWeather();
+
+    const cityData = weatherData?.city ? weatherData.city : weatherData;
+
   return (
     <View style={styles.container}>
         <ImageBackground
         style={styles.imageLayout}
         source={require('@/assets/images/city.jpg')}>
-            <Text style={[styles.city, styles.cityText]}>City</Text>
-            <Text style={[styles.country, styles.cityText]}>Country</Text>
+            <Text style={[styles.city, styles.cityText]}>{cityData?.name}</Text>
+            <Text style={[styles.country, styles.cityText]}>{cityData?.country}</Text>
             <View style={[styles.populationWrapper, styles.rowLayout]}>
                 <IconText featherName="user"
                 featherSize={50}
                 featherColor="red"
-                title="10000"
+                title={`Population: ${cityData?.population}`}
                 styling={styles.populationText}/>
             </View>
             <View style={[styles.sunWrapper, styles.rowLayout]}>
                 <IconText featherName="sunrise"
                 featherSize={50}
                 featherColor="white"
-                title="6:00:00AM"
+                title={cityData?.sunrise ? moment(cityData.sunrise * 1000).format('h:mm:ss a') : ''}
                 styling={styles.sunText}/>
                 <IconText featherName="sunset"
                 featherSize={50}
                 featherColor="white"
-                title="8:00:00PM"
+                title={cityData?.sunset ? moment(cityData.sunset * 1000).format('h:mm:ss a') : ''}
                 styling={styles.sunText}/>
             </View>
         </ImageBackground>
@@ -47,6 +54,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
     },
     cityText:{
+        marginTop: 10,
         justifyContent: 'center',
         alignSelf: 'center',
         fontWeight: 'bold',

@@ -1,8 +1,12 @@
 import { View, Text, ImageBackground, StyleSheet, FlatList } from "react-native"
 import Item from "../components/Item";
-import { Data } from '@/assets/Data';
+import { useWeather } from "../context/weatherProvider";
 
 const UpcomingWeather = () => {
+
+    const weatherData = useWeather();
+
+    const weatherList = weatherData?.list ? weatherData.list : (Array.isArray(weatherData) ? weatherData : []);
 
     const renderItem = ({item}: { item: any })=>(
         <Item condition={item.weather[0].main}
@@ -16,9 +20,8 @@ const UpcomingWeather = () => {
         <ImageBackground 
         style={styles.image}
         source={require('@/assets/images/clouds.jpg')}>
-            <Text>Upcoming Weather</Text>
             <FlatList 
-            data={Data}
+            data={weatherList}
             renderItem={renderItem}
             keyExtractor={(item) => item.dt_txt}/>
         </ImageBackground>

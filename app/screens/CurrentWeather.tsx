@@ -2,22 +2,31 @@ import { View, Text, StyleSheet } from "react-native";
 import { Feather } from '@expo/vector-icons';
 import RowText from "../components/RowText";
 import weatherType from "../utilities/weatherType";
+import { useWeather } from "../context/weatherProvider";
 
 const CurrentWeather = ()=>{
+
+  const weatherData = useWeather();
+
+  const currentData = weatherData.list ? weatherData.list[0] : weatherData;
+  const { main: { temp, feels_like, temp_max, temp_min }, weather } = currentData;
+  const weatherCondition = weather[0]?.main as keyof typeof weatherType;
+
   return(
-    <View style={styles.wrapper}>
+    <View style={[styles.wrapper, 
+    {backgroundColor: weatherType[weatherCondition]?.backgroundColor}]}>
       <View style={styles.container}>
-        <Feather name='sun' size={100} color='black'/>
-        <Text style={styles.temp}>6</Text>
-        <Text style={styles.feels}>Feels like 5</Text>
-        <RowText firstText="High: 8"
-        secondText="Low: 6"
+        <Feather name={weatherType[weatherCondition]?.icon as any} size={100} color='white'/>
+        <Text style={styles.temp}>{temp}</Text>
+        <Text style={styles.feels}>{`Feels like ${feels_like}`}</Text>
+        <RowText firstText={`High: ${temp_max}° `}
+        secondText={`Low: ${temp_min}° `}
         firstTextStyling={styles.highLow}
         secondTextStyling={styles.highLow}
         containerStyling={styles.highLowWrapper}/>
       </View>
-      <RowText firstText='Thuderstorm'
-      secondText={weatherType['Thunderstorm'].message}
+      <RowText firstText={weather[0].description}
+      secondText={weatherType[weatherCondition]?.message}
       firstTextStyling={styles.description}
       secondTextStyling={styles.message}
       containerStyling={styles.bodyWrapper}/>
