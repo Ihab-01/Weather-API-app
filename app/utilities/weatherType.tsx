@@ -2,42 +2,42 @@ const weatherType = {
     Thunderstorm:{
         icon: 'zap',
         message: 'it could get noisy',
-        backgroundColor: '#000000'
+        backgroundImage: require("../assets/images/thunder.jpg"),
     },
     Drizzle:{
         icon: 'rain',
         message: 'it might rain a little',
-        backgroundColor: '#36454f'
+        backgroundImage: require("../assets/images/rain.jpg"),
     },
     Rain:{
         icon: 'umbrella',
         message: 'you will need an umbrella',
-        backgroundColor: '#0000ff'
+        backgroundImage: require("../assets/images/rain.jpg"),
     },
     Snow:{
         icon: 'cloud-snow',
         message: 'lets build a snow man',
-        backgroundColor: '#7f6065'
+        backgroundImage: require("../assets/images/snow.jpg"),
     },
     Clear:{
         icon: 'sun',
         message: 'its perfect t-shirt weather',
-        backgroundColor: '#e47200'
+        backgroundImage: require("../assets/images/clear.jpg"),
     },
     Clouds:{
         icon: 'cloud',
         message: 'you could live in the clouds',
-        backgroundColor: '#363636'
+        backgroundImage: require("../assets/images/clouds.jpg"),
     },
     Haze:{
         icon: 'wind',
         message: 'it might be a bit damp',
-        backgroundColor: '#58586e'
+        backgroundImage: require("../assets/images/mist.jpg"),
     },
     Mist:{
         icon: 'align-justify',
         message: 'it might be hard to see',
-        backgroundColor: '#3e3e37'
+        backgroundImage: require("../assets/images/mist.jpg"),
     }
 }
 

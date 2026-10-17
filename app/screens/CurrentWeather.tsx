@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, ImageBackground, Text, StyleSheet } from "react-native";
 import { Feather } from '@expo/vector-icons';
 import RowText from "../components/RowText";
 import weatherType from "../utilities/weatherType";
@@ -13,23 +13,30 @@ const CurrentWeather = ()=>{
   const weatherCondition = weather[0]?.main as keyof typeof weatherType;
 
   return(
-    <View style={[styles.wrapper, 
-    {backgroundColor: weatherType[weatherCondition]?.backgroundColor}]}>
-      <View style={styles.container}>
-        <Feather name={weatherType[weatherCondition]?.icon as any} size={100} color='white'/>
-        <Text style={styles.temp}>{`${temp}°`}</Text>
-        <Text style={styles.feels}>{`Feels like ${feels_like}`}</Text>
-        <RowText firstText={`High: ${temp_max}° `}
-        secondText={`Low: ${temp_min}° `}
-        firstTextStyling={styles.highLow}
-        secondTextStyling={styles.highLow}
-        containerStyling={styles.highLowWrapper}/>
-      </View>
-      <RowText firstText={weather[0].description}
-      secondText={weatherType[weatherCondition]?.message}
-      firstTextStyling={styles.description}
-      secondTextStyling={styles.message}
-      containerStyling={styles.bodyWrapper}/>
+    <View style={styles.wrapper}>
+      <ImageBackground 
+      style={styles.image}
+      source={weatherType[weatherCondition]?.backgroundImage}>
+        <View style={styles.overlay}>
+          <View style={styles.container}>
+            <View style={styles.iconContainer}>
+              <Feather name={weatherType[weatherCondition]?.icon as any} size={90} color='#ffffff'/>
+            </View>
+            <Text style={styles.temp}>{`${Math.round(temp)}°`}</Text>
+            <Text style={styles.feels}>{`Feels like ${Math.round(feels_like)}°`}</Text>
+            <RowText firstText={`High: ${Math.round(temp_max)}° `}
+            secondText={`Low: ${Math.round(temp_min)}° `}
+            firstTextStyling={styles.highLow}
+            secondTextStyling={styles.highLow}
+            containerStyling={styles.highLowWrapper}/>
+          </View>
+          <RowText firstText={weather[0].description}
+          secondText={weatherType[weatherCondition]?.message}
+          firstTextStyling={styles.description}
+          secondTextStyling={styles.message}
+          containerStyling={styles.bodyWrapper}/>
+        </View>
+      </ImageBackground>
     </View>
   )
 }
@@ -37,39 +44,68 @@ const CurrentWeather = ()=>{
 const styles = StyleSheet.create({
   wrapper:{
     flex:1,
-    backgroundColor: 'pink',
+    backgroundColor: '#0f172a',
+  },
+  image:{
+    flex:1,
+  },
+  overlay:{
+    flex:1,
+    backgroundColor: 'rgba(0, 0, 0, 0.35)',
+    justifyContent: 'space-between',
+    paddingVertical: 50,
   },
   container:{
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
+  iconContainer:{
+    backgroundColor: 'rgba(255, 255, 255, 0.15chno)',
+    padding: 20,
+    borderRadius: 50,
+    marginBottom: 15,
+  },
   temp:{
-    color: 'black',
-    fontSize: 48,
+    color: '#ffffff',
+    fontSize: 76,
+    fontWeight: '300',
   },
   feels:{
-    color: 'black',
-    fontSize: 30,
+    color: '#e2e8f0',
+    fontSize: 20,
+    marginBottom: 10,
+    fontWeight: '500',
   },
   highLow:{
-    fontSize: 20,
+    fontSize: 18,
+    color: '#f8fafc',
+    fontWeight: '600',
   },
   highLowWrapper:{
     flexDirection: 'row',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
   },
   bodyWrapper:{
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
-    paddingLeft: 25,
-    marginBottom: 40,
+    paddingHorizontal: 25,
   },
   description:{
-    fontSize: 48,
+    fontSize: 32,
+    color: '#ffffff',
+    fontWeight: 'bold',
+    textTransform: 'capitalize',
+    marginBottom: 5,
   },
   message:{
-    fontSize: 30,
-  },
+    fontSize: 18,
+    color: '#e2e8f0',
+    fontWeight: '500',
+  }
 })
 
 export default CurrentWeather;

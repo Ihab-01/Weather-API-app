@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     defaultText: {
-      fontWeight: 'bold',
+        fontWeight: '600',
     },
 });
 

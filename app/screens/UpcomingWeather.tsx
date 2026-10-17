@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, StyleSheet, FlatList } from "react-native"
+import { View, StyleSheet, FlatList } from "react-native"
 import Item from "../components/Item";
 import { useWeather } from "../context/weatherProvider";
 
@@ -17,14 +17,11 @@ const UpcomingWeather = () => {
 
   return (
     <View style={styles.container}>
-        <ImageBackground 
-        style={styles.image}
-        source={require('@/assets/images/clouds.jpg')}>
             <FlatList 
             data={weatherList}
             renderItem={renderItem}
-            keyExtractor={(item) => item.dt_txt}/>
-        </ImageBackground>
+            keyExtractor={(item) => item.dt_txt}
+            contentContainerStyle={styles.listContainer}/>
     </View>
   )
 }
@@ -32,11 +29,11 @@ const UpcomingWeather = () => {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor: 'royalblue',
+        backgroundColor: '#0f172a',
     },
-    image:{
-        flex:1,
-    },
+    listContainer: {
+        paddingVertical: 12,
+    }
 })
 
 export default UpcomingWeather

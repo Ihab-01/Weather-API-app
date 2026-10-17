@@ -21,7 +21,7 @@ export default function RootLayout() {
         {error ?
         <Error />
         :
-        <ActivityIndicator size={'large'} color={'blue'} />}
+        <ActivityIndicator size={'large'} color={'#ffffff'} />}
       </View>
     );
 }
@@ -31,5 +31,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#0f172a',
   }
 });

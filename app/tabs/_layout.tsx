@@ -5,45 +5,49 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: 'royalblue',
-        tabBarInactiveTintColor: 'black',
+        tabBarActiveTintColor: '#38bdf8',
+        tabBarInactiveTintColor: '#64748b',
+        tabBarStyle: {
+          backgroundColor: '#0f172a',
+          borderTopColor: '#1e293b',
+          borderTopWidth: 1,
+          height: 75,
+          paddingBottom: 10,
+          paddingTop: 8,
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: '600',
+        },
+        headerShown: false,
       }}
     >
-      <Tabs.Screen 
-        name="current" 
-        options={{ 
+      <Tabs.Screen
+        name="current"
+        options={{
           title: 'Current',
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <Feather name="sun"
-            size={25}
-            color={focused? 'royalblue' : 'black'} />
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="sun" size={size} color={color} />
           ),
-        }} 
+        }}
       />
-      <Tabs.Screen 
-        name="upcoming" 
-        options={{ 
+      <Tabs.Screen
+        name="upcoming"
+        options={{
           title: 'Upcoming',
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <Feather name="clock"
-            size={25}
-            color={focused? 'royalblue' : 'black'} />
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="calendar" size={size} color={color} />
           ),
-        }} 
+        }}
       />
-      <Tabs.Screen 
-        name="city" 
-        options={{ 
+      <Tabs.Screen
+        name="city"
+        options={{
           title: 'City',
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <Feather name="home"
-            size={25}
-            color={focused? 'royalblue' : 'black'} />
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="home" size={size} color={color} />
           ),
-        }} 
+        }}
       />
     </Tabs>
   );

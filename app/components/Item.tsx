@@ -14,37 +14,54 @@ const Item = ({ dt_txt, min, max, condition }: ItemProps) => {
 
   return (
     <View style={styles.item}>
-        <Feather name={weatherType[condition]?.icon as any} size={50} color='white'/>
-        <View style={styles.dateWrapper}>
-            <Text style={styles.date}>{moment(dt_txt).format('dddd')}</Text>
-            <Text style={styles.date}>{moment(dt_txt).format('h:mm:ss a')}</Text>
+        <View style={styles.iconBox}>
+            <Feather name={weatherType[condition]?.icon as any} size={28} color='#ffffff'/>
         </View>
-        <Text style={styles.temp}>{`${Math.round(min)}° - ${Math.round(max)}°`}</Text>
+        <View style={styles.dateWrapper}>
+            <Text style={styles.day}>{moment(dt_txt).format('dddd')}</Text>
+            <Text style={styles.time}>{moment(dt_txt).format('h:mm a')}</Text>
+        </View>
+        <Text style={styles.temp}>{`${Math.round(min)}° / ${Math.round(max)}°`}</Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
     item:{
-        padding: 20,
-        marginVertical: 8,
+        padding: 16,
+        marginVertical: 6,
         marginHorizontal: 16,
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        borderWidth: 5,
-        backgroundColor: 'pink',
+        backgroundColor: '#1e293b',
+        borderRadius: 16,
+        borderWidth: 1,
+        borderColor: '#334155',
+    },
+    iconBox: {
+        width: 45,
+        alignItems: 'center',
     },
     temp:{
-        color: 'white',
-        fontSize: 20,
+        color: '#ffffff',
+        fontSize: 16,
+        fontWeight: '600',
     },
-    date:{
-        color: 'white',
-        fontSize: 15,
+    day:{
+        color: '#ffffff',
+        fontSize: 16,
+        fontWeight: '600',
+    },
+    time: {
+        color: '#94a3b8',
+        fontSize: 13,
+        marginTop: 2,
     },
     dateWrapper: {
-        flexDirection: 'column'
+        flexDirection: 'column',
+        flex: 1,
+        marginLeft: 15,
     }
 }) 
 
