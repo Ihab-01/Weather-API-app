@@ -17,7 +17,7 @@ const CurrentWeather = ()=>{
     {backgroundColor: weatherType[weatherCondition]?.backgroundColor}]}>
       <View style={styles.container}>
         <Feather name={weatherType[weatherCondition]?.icon as any} size={100} color='white'/>
-        <Text style={styles.temp}>{temp}</Text>
+        <Text style={styles.temp}>{`${temp}°`}</Text>
         <Text style={styles.feels}>{`Feels like ${feels_like}`}</Text>
         <RowText firstText={`High: ${temp_max}° `}
         secondText={`Low: ${temp_min}° `}
