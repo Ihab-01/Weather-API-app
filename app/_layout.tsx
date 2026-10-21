@@ -10,7 +10,7 @@ export default function RootLayout() {
   if(weather && weather.list && !loading){
     return (
       <WeatherProvider weather={weather}>
-        <Stack>
+        <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         </Stack>
       </WeatherProvider>

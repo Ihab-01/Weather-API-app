@@ -1,4 +1,5 @@
 import { Text, StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import IconText from "../components/IconText";
 import { useWeather } from "../context/weatherProvider";
 import moment from "moment";
@@ -10,7 +11,7 @@ const City = () => {
     const cityData = weatherData?.city ? weatherData.city : weatherData;
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top']}>
             <View style={styles.headerContainer}>
                 <Text style={[styles.city, styles.cityText]}>{cityData?.name}</Text>
                 <Text style={[styles.country, styles.cityText]}>{cityData?.country}</Text>
@@ -37,7 +38,7 @@ const City = () => {
                     styling={styles.sunText}/>
                 </View>
             </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

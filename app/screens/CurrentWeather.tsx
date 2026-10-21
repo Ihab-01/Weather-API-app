@@ -1,4 +1,5 @@
 import { View, ImageBackground, Text, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather } from '@expo/vector-icons';
 import RowText from "../components/RowText";
 import weatherType from "../utilities/weatherType";
@@ -13,7 +14,7 @@ const CurrentWeather = ()=>{
   const weatherCondition = weather[0]?.main as keyof typeof weatherType;
 
   return(
-    <View style={styles.wrapper}>
+    <SafeAreaView style={styles.wrapper} edges={['top']}>
       <ImageBackground 
       style={styles.image}
       source={weatherType[weatherCondition]?.backgroundImage}>
@@ -37,7 +38,7 @@ const CurrentWeather = ()=>{
           containerStyling={styles.bodyWrapper}/>
         </View>
       </ImageBackground>
-    </View>
+    </SafeAreaView>
   )
 }
 

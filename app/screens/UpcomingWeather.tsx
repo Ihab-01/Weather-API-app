@@ -1,4 +1,5 @@
-import { View, StyleSheet, FlatList } from "react-native"
+import { StyleSheet, FlatList } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context";
 import Item from "../components/Item";
 import { useWeather } from "../context/weatherProvider";
 
@@ -16,13 +17,13 @@ const UpcomingWeather = () => {
     )
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top']}>
             <FlatList 
             data={weatherList}
             renderItem={renderItem}
             keyExtractor={(item) => item.dt_txt}
             contentContainerStyle={styles.listContainer}/>
-    </View>
+    </SafeAreaView>
   )
 }
 
